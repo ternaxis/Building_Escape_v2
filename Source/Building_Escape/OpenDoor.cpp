@@ -1,7 +1,7 @@
 // Copyright Ali Eren Acar 2021
 
-
 #include "OpenDoor.h"
+
 
 // Sets default values for this component's properties
 UOpenDoor::UOpenDoor()
@@ -18,6 +18,7 @@ UOpenDoor::UOpenDoor()
 void UOpenDoor::BeginPlay()
 {
 	Super::BeginPlay();
+	float a = 10f;
 
 	// ...
 	
