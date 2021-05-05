@@ -4,7 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Components/LightComponent.h"
 #include "Engine/TriggerVolume.h"
+#include "Engine/Light.h"
+#include "Engine/SpotLight.h"
 #include "OpenDoor.generated.h"
 
 
@@ -26,18 +29,40 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	void OpenDoor(float DeltaTime);
+	void CloseDoor(float DeltaTime);
+	float TotalMassOfActors() const;
+
 
 private:
 float InitialYaw;
 float CurrentYaw;
 
 UPROPERTY(EditAnywhere)
-float targetYaw=90.f; 
+float OpenAngle=90.f; 
 
 UPROPERTY(EditAnywhere)
 ATriggerVolume* PressurePlate;
 
 UPROPERTY(EditAnywhere)
 AActor* ActorThatOpen;
+
+UPROPERTY(EditAnywhere)
+ASpotLight* SpotLight;
+
+
+float DoorLastOpened=0.f;
+
+UPROPERTY(EditAnywhere)
+float DoorCloseDelay=2.f;
+
+UPROPERTY(EditAnywhere)
+float DoorOpenSpeed=0.8f;
+
+UPROPERTY(EditAnywhere)
+float DoorCloseSpeed=2.0f;
+
+UPROPERTY(EditAnywhere)
+float CurrentIntensity=0.f;
+
 		
 };
